@@ -40,7 +40,7 @@ function addTodo() {
     var todoPrio = inputPrioElement.value;
 
     prior.push(parseInt(todoPrio));
-    todos.push(`Título: ${todoText} Descrição: ${todoDesc}    `);
+    todos.push(`Tarefa: ${todoText} Descrição: ${todoDesc}    `);
     inputTitleElement.value = '';
     inputDescElement.value = '';
     renderTodos();
