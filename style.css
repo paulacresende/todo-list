@@ -90,3 +90,38 @@ button#end{
 .button-list{
    text-align: center;
 }
+
+@media screen and (max-width: 600px){
+    .header{
+        width: 100%;
+    }
+    
+    .header input[type=text]{
+        width:100%;
+        height: 100%;
+        font-size: 80%;
+    }
+    
+    .header input[type=number]{
+        width: 100%;
+        font-size: 80%;
+    }
+    
+    .header button{
+        font-size: 80%;
+    }
+
+    .tasks li{
+        font-size: 80%;
+    }
+    
+    a{
+        font-size: 70%;
+        margin-left: 70%;
+    }
+    
+    button#end{
+        font-size: 80%;
+    }
+
+}
