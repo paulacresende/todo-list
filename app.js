@@ -7,6 +7,7 @@ var buttonEndElement = document.querySelector('button[name=end]');  //busca dent
 
 var todos = [];
 var prior = [];
+var pontos = [];
 
 //renderiza os ToDos
 function renderTodos() {
@@ -39,6 +40,7 @@ function addTodo() {
     var todoDesc = inputDescElement.value;
     var todoPrio = inputPrioElement.value;
 
+    pontos.push(parseInt(todoPrio));
     prior.push(parseInt(todoPrio));
     todos.push(`Tarefa: ${todoText} Descrição: ${todoDesc}    `);
     inputTitleElement.value = '';
@@ -57,21 +59,29 @@ function deleteTodo(pos) {
 // Organiza os ToDos por dia com no máx 13 pontos por dia
 function listOganized() {
     listElement.innerHTML = '';
-    var tot = 0;
+    var total = 0;
     var j = 1;
+    prior.sort();
 
     for (var i = 0; i < prior.length; i++) {
-        tot += prior[i];
-        if (tot <= 13) {
-            var todoElement = document.createElement('li');
-            todoElement.innerHTML = `Dia ${j}: ${todos[i]}`;
-            listElement.appendChild(todoElement);
-        } else {
-            tot = 0;
-            i -= 1;
-            j += 1;
+        for (var k = 0; k < pontos.length; k++) {
+            if (prior[i] === pontos[k]) {
+                total += prior[i];
+                if (total <= 13) {
+                    var todoElement = document.createElement('li');
+                    todoElement.innerHTML = `Dia ${j}: ${todos[k]}`;
+                    listElement.appendChild(todoElement);
+                } else {
+                    total = 0;
+                    total = prior[i];
+                    j += 1;
+                    var todoElement = document.createElement('li');
+                    todoElement.innerHTML = `Dia ${j}: ${todos[k]}`;
+                    listElement.appendChild(todoElement);
+                }
+            }
         }
-    }    
+    }
 }
 
 buttonEndElement.onclick = listOganized;
